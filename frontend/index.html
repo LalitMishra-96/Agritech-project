@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriSmart AI — Modern SaaS Smart Agriculture Assistant for Crop Recommendation, Irrigation, and Soil Advisory.">
+  <title>AgriSmart AI — Smart Agriculture Assistant</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Backdrop overlay for mobile drawer -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <div class="app-wrapper">
+    <!-- ====================================================================
+         Sidebar Navigation (Forest Green Theme)
+         ==================================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-container">
+          <div class="brand-icon">
+            <!-- Leaf SVG Icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+              <path d="M12 2v20"/>
+            </svg>
+          </div>
+          <div class="brand-details">
+            <span class="brand-title">AgriSmart AI</span>
+            <span class="brand-subtitle">Smart Agri SaaS</span>
+          </div>
+        </div>
+
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="sidebar-body">
+        <div class="nav-group-label">Core Modules</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#dashboard" class="nav-link active" data-view="dashboard">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#crop" class="nav-link" data-view="crop">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v8"/>
+                <path d="m4.93 10.93 1.41 1.41"/>
+                <path d="M2 18h2"/>
+                <path d="M20 18h2"/>
+                <path d="m19.07 10.93-1.41 1.41"/>
+                <path d="M22 22H2"/>
+                <path d="m8 6 4-4 4 4"/>
+                <path d="M16 18a4 4 0 0 0-8 0"/>
+              </svg>
+              <span>Crop Recommendation</span>
+              <span class="nav-badge">AI</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#irrigation" class="nav-link" data-view="irrigation">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+              <span>Irrigation Advisor</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#fertilizer" class="nav-link" data-view="fertilizer">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2v7.31"/>
+                <path d="M14 9.3V2"/>
+                <path d="M8.5 2h7"/>
+                <path d="M14 9.3a6.5 6.5 0 1 1-4 0"/>
+                <path d="M5.52 16h12.96"/>
+              </svg>
+              <span>Fertilizer Guidance</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#weather" class="nav-link" data-view="weather">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+              <span>Weather</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#history" class="nav-link" data-view="history">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>History</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Card -->
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" title="Lalit Mishra">LM</div>
+          <div class="user-meta">
+            <span class="user-name">Lalit Mishra</span>
+            <span class="user-role">Farm Lead &bull; Student</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         Main Dashboard Canvas
+         ==================================================================== -->
+    <main class="app-main">
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="page-headline">
+            <h1 class="page-title" id="headerPageTitle">Executive Dashboard</h1>
+            <p class="page-subtext" id="headerPageSubtext">Overview of real-time farm health, AI advisories, and conditions.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Search Box -->
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" id="globalSearchInput" placeholder="Search modules, crops..." aria-label="Search">
+            <span class="search-kbd">⌘K</span>
+          </div>
+
+          <!-- Header Action Buttons -->
+          <div class="header-actions">
+            <!-- Notification Button -->
+            <button class="header-action-btn" id="notifBtn" aria-label="View notifications">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+              </svg>
+              <span class="notif-badge-dot" id="notifBadgeDot"></span>
+            </button>
+
+            <!-- Notifications Dropdown Panel -->
+            <div class="dropdown-panel" id="notifDropdown">
+              <div class="dropdown-header">
+                <span class="dropdown-header-title">Farm Notifications</span>
+                <span class="dropdown-badge">2 Unread</span>
+              </div>
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <div class="dropdown-item-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <strong>Moisture Alert — Zone A</strong>
+                    Soil moisture dropped to 38%. Drip irrigation advised before noon.
+                    <div class="dropdown-item-time">15 mins ago</div>
+                  </div>
+                </li>
+                <li class="dropdown-item">
+                  <div class="dropdown-item-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2"/>
+                      <path d="M12 20v2"/>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <strong>Optimal Sowing Window</strong>
+                    Favorable temperatures for wheat sowing throughout the coming 48h.
+                    <div class="dropdown-item-time">1 hour ago</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Profile Menu Trigger -->
+            <button class="profile-trigger" id="profileTrigger" aria-label="User Profile">
+              <div class="profile-avatar-small">LM</div>
+              <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Profile Dropdown Panel -->
+            <div class="dropdown-panel" id="profileDropdown" style="width: 220px;">
+              <div class="dropdown-header">
+                <div>
+                  <div style="font-weight: 600; font-size: 13px; color: var(--color-primary-900);">Lalit Mishra</div>
+                  <div style="font-size: 11px; color: var(--color-text-secondary);">lalit@agrismart.ai</div>
+                </div>
+              </div>
+              <ul class="dropdown-list">
+                <li class="dropdown-item" style="cursor: pointer;">
+                  <div class="dropdown-item-text"><strong>Project Blueprint</strong></div>
+                </li>
+                <li class="dropdown-item" style="cursor: pointer;">
+                  <div class="dropdown-item-text"><strong>Switch Farm Field</strong></div>
+                </li>
+                <li class="dropdown-item" style="cursor: pointer;">
+                  <div class="dropdown-item-text" style="color: var(--color-danger);"><strong>Sign out</strong></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Body Container -->
+      <div class="content-container">
+
+        <!-- ================================================================
+             VIEW 1: EXECUTIVE DASHBOARD (Active View)
+             ================================================================ -->
+        <section class="view-section active" id="view-dashboard">
+
+          <!-- Welcome Banner / Hero Section -->
+          <div class="dashboard-hero">
+            <div class="hero-content">
+              <div class="hero-pill">
+                <span class="hero-pill-dot"></span>
+                <span>Live Farm Monitor &bull; Field Zone A-1</span>
+              </div>
+              <h2 class="hero-title">Good afternoon, Lalit. Soil conditions are favorable today.</h2>
+              <p class="hero-description">
+                AI decision models and meteorological indicators recommend proceeding with rabi season soil preparation. Next automated irrigation cycle is scheduled in 3 hours.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-target-view="crop">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+                  <path d="M12 2v20"/>
+                </svg>
+                <span>Run Crop AI</span>
+              </button>
+              <button class="btn btn-secondary" data-target-view="irrigation">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+                <span>Irrigation Plan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Statistic KPI Cards -->
+          <div class="stats-grid">
+            <!-- Stat 1: Crop Recommendations -->
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon-wrapper green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v8"/>
+                    <path d="M22 22H2"/>
+                    <path d="m8 6 4-4 4 4"/>
+                    <path d="M16 18a4 4 0 0 0-8 0"/>
+                  </svg>
+                </div>
+                <span class="demo-data-badge" id="dashCropBadge">Sample UI Demo</span>
+              </div>
+              <span class="stat-label">Recommended Crop</span>
+              <div class="stat-value" id="dashCropValue">Wheat / Barley</div>
+              <div class="stat-footer">
+                <span class="stat-trend positive" id="dashCropTrend">↑ 96.4%</span>
+                <span class="stat-trend-subtext" id="dashCropSubtext">AI prediction confidence</span>
+              </div>
+            </div>
+
+            <!-- Stat 2: Soil Health -->
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon-wrapper emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </div>
+                <span class="demo-data-badge">Sample UI Demo</span>
+              </div>
+              <span class="stat-label">Soil Health Score</span>
+              <div class="stat-value">78 / 100</div>
+              <div class="stat-footer">
+                <span class="stat-trend positive">Optimal</span>
+                <span class="stat-trend-subtext">pH 6.8 &bull; N-P-K balanced</span>
+              </div>
+            </div>
+
+            <!-- Stat 3: Water Efficiency -->
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon-wrapper blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </div>
+                <span class="demo-data-badge">Sample UI Demo</span>
+              </div>
+              <span class="stat-label">Water Efficiency</span>
+              <div class="stat-value">84%</div>
+              <div class="stat-footer">
+                <span class="stat-trend neutral">3.2 mm/d</span>
+                <span class="stat-trend-subtext">Drip schedule active</span>
+              </div>
+            </div>
+
+            <!-- Stat 4: Weather Status -->
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-icon-wrapper amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2"/>
+                    <path d="M12 20v2"/>
+                    <path d="m4.93 4.93 1.41 1.41"/>
+                    <path d="m17.66 17.66 1.41 1.41"/>
+                    <path d="M2 12h2"/>
+                    <path d="M20 12h2"/>
+                  </svg>
+                </div>
+                <span class="demo-data-badge">Sample UI Demo</span>
+              </div>
+              <span class="stat-label">Weather Status</span>
+              <div class="stat-value">27°C &bull; Clear</div>
+              <div class="stat-footer">
+                <span class="stat-trend positive">10% Rain</span>
+                <span class="stat-trend-subtext">Safe for field operations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid (Large Crop Card + Irrigation & Weather) -->
+          <div class="feature-grid">
+            <!-- Left Large Feature Card: AI Crop Recommendation -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <div class="card-title-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+                      <path d="M12 2v20"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="card-title">AI Crop Recommendation Engine</h3>
+                    <p class="card-subtitle">Supervised machine learning decision system</p>
+                  </div>
+                </div>
+                <span class="demo-data-badge">Demo Model Preview</span>
+              </div>
+
+              <div class="card-body crop-feature-content">
+                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.5;">
+                  Evaluates 7 distinct environmental and agronomic parameters—including Nitrogen (N), Phosphorus (P), Potassium (K), Soil pH, Temperature, Humidity, and Rainfall—to pinpoint the highest-yielding crop for your specific plot.
+                </p>
+
+                <!-- High-priority preview box -->
+                <div class="crop-preview-box">
+                  <div class="crop-highlight">
+                    <div class="crop-badge-visual">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v8"/>
+                        <path d="M22 22H2"/>
+                        <path d="m8 6 4-4 4 4"/>
+                        <path d="M16 18a4 4 0 0 0-8 0"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="crop-info-name">Wheat (Triticum aestivum)</div>
+                      <div class="crop-info-meta">Ideal Sowing: Oct – Nov &bull; Clay Loam Soil</div>
+                    </div>
+                  </div>
+                  <div class="crop-confidence-pill">
+                    <div class="confidence-val">96.4% Match</div>
+                    <div class="confidence-label">High Confidence</div>
+                  </div>
+                </div>
+
+                <!-- Evaluated Parameter Chips -->
+                <div class="parameter-chips">
+                  <div class="param-chip">
+                    <div class="param-name">Nitrogen (N)</div>
+                    <div class="param-val">88 mg/kg</div>
+                  </div>
+                  <div class="param-chip">
+                    <div class="param-name">Phosphorus (P)</div>
+                    <div class="param-val">42 mg/kg</div>
+                  </div>
+                  <div class="param-chip">
+                    <div class="param-name">Potassium (K)</div>
+                    <div class="param-val">46 mg/kg</div>
+                  </div>
+                  <div class="param-chip">
+                    <div class="param-name">Soil pH</div>
+                    <div class="param-val">6.7 Neutral</div>
+                  </div>
+                </div>
+
+                <div style="margin-top: var(--space-xs); display: flex; justify-content: flex-end;">
+                  <button class="btn btn-primary" data-target-view="crop">
+                    <span>Explore Crop Advisor</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Irrigation & Weather Cards -->
+            <div class="side-feature-stack">
+              <!-- Smart Irrigation Card -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #e0f2fe; color: #0369a1;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Smart Irrigation</h3>
+                      <p class="card-subtitle">Water deficit & evapotranspiration</p>
+                    </div>
+                  </div>
+                  <span class="demo-data-badge">UI Demo</span>
+                </div>
+
+                <div class="card-body irrigation-quick-view">
+                  <div class="status-meter-box">
+                    <div class="status-meter-header">
+                      <span>Soil Moisture Level</span>
+                      <strong style="color: var(--color-primary-800);">64% (Optimal)</strong>
+                    </div>
+                    <div class="meter-track">
+                      <div class="meter-fill" style="width: 64%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="irrigation-tips-list">
+                    <div class="irrigation-tip-item">
+                      <span class="tip-dot"></span>
+                      <span>Next automated cycle: <strong>Today @ 17:30</strong> (Drip method)</span>
+                    </div>
+                    <div class="irrigation-tip-item">
+                      <span class="tip-dot"></span>
+                      <span>Estimated daily water savings: <strong>~28% vs flood irrigation</strong></span>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-secondary" style="width: 100%; margin-top: 4px;" data-target-view="irrigation">
+                    <span>Manage Irrigation</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Weather Overview Card -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #fef3c7; color: #b45309;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2v2"/>
+                        <path d="M12 20v2"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Weather Intelligence</h3>
+                      <p class="card-subtitle">Field Agrometeorology</p>
+                    </div>
+                  </div>
+                  <span class="demo-data-badge">Live Feed</span>
+                </div>
+
+                <div class="card-body weather-card-content">
+                  <div class="weather-header-stat">
+                    <div>
+                      <div class="weather-temp-main">27°C</div>
+                      <div class="weather-condition">Clear Skies &bull; Light Breeze</div>
+                    </div>
+                    <div class="weather-icon-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="weather-metrics-row">
+                    <div class="weather-micro-metric">
+                      Humidity
+                      <strong>58%</strong>
+                    </div>
+                    <div class="weather-micro-metric">
+                      Wind Speed
+                      <strong>11 km/h</strong>
+                    </div>
+                    <div class="weather-micro-metric">
+                      Rainfall Prob.
+                      <strong>10%</strong>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-secondary" style="width: 100%;" data-target-view="weather">
+                    <span>Full Weather Forecast</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity / Recommendations Section -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <div class="card-title-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Recent Recommendations & Activity</h3>
+                  <p class="card-subtitle">Consultation log and advisory history</p>
+                </div>
+              </div>
+              <span class="demo-data-badge">Sample Log</span>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Date & Time</th>
+                    <th>Module / Crop</th>
+                    <th>Field Sector</th>
+                    <th>Key Metric</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Today, 14:15</td>
+                    <td>
+                      <div class="crop-cell">
+                        <div class="crop-cell-icon">🌾</div>
+                        <span>Wheat (Rabi Season)</span>
+                      </div>
+                    </td>
+                    <td>North Sector (Zone A)</td>
+                    <td>N: 90 &bull; P: 42 &bull; K: 48</td>
+                    <td><span class="status-tag optimal">96.4% Match</span></td>
+                    <td><button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" data-target-view="crop">View</button></td>
+                  </tr>
+                  <tr>
+                    <td>Yesterday, 09:30</td>
+                    <td>
+                      <div class="crop-cell">
+                        <div class="crop-cell-icon">💧</div>
+                        <span>Irrigation Scheduling</span>
+                      </div>
+                    </td>
+                    <td>East Orchards (Zone B)</td>
+                    <td>Deficit: 4.2 mm</td>
+                    <td><span class="status-tag scheduled">Executed</span></td>
+                    <td><button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" data-target-view="irrigation">View</button></td>
+                  </tr>
+                  <tr>
+                    <td>28 Oct, 17:00</td>
+                    <td>
+                      <div class="crop-cell">
+                        <div class="crop-cell-icon">🧪</div>
+                        <span>Fertilizer Dosage Check</span>
+                      </div>
+                    </td>
+                    <td>South Sector (Zone C)</td>
+                    <td>Urea: 45 kg/ha</td>
+                    <td><span class="status-tag review">Action Required</span></td>
+                    <td><button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" data-target-view="fertilizer">View</button></td>
+                  </tr>
+                  <tr>
+                    <td>27 Oct, 11:20</td>
+                    <td>
+                      <div class="crop-cell">
+                        <div class="crop-cell-icon">🌽</div>
+                        <span>Maize Feasibility</span>
+                      </div>
+                    </td>
+                    <td>Main Experimental Plot</td>
+                    <td>pH: 6.4 &bull; Rain: 85mm</td>
+                    <td><span class="status-tag optimal">89.1% Match</span></td>
+                    <td><button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" data-target-view="history">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 2: CROP RECOMMENDATION (Interactive Form Interface)
+             ================================================================ -->
+        <section class="view-section" id="view-crop">
+          <!-- Module Header & Breadcrumb -->
+          <div class="module-header-container">
+            <div class="module-header-info">
+              <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+                <a href="#dashboard" data-target-view="dashboard">Dashboard</a>
+                <span class="breadcrumb-sep">/</span>
+                <span>Crop Recommendation</span>
+              </nav>
+              <h2 class="module-title">AI Crop Recommendation</h2>
+              <p class="module-subtitle">Enter soil nutrient concentrations and local climatic variables to determine optimal crop viability.</p>
+            </div>
+            <div class="module-header-actions">
+              <button class="btn btn-secondary" id="btnLoadCropSample" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Load Sample Data</span>
+              </button>
+              <button class="btn btn-secondary" data-target-view="dashboard" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Dashboard</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Two-Column Layout: Form on Left, Guide on Right -->
+          <div class="module-two-col-layout">
+            <!-- Left Column: Form & Feedback -->
+            <div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+                        <path d="M12 2v20"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Soil & Climate Parameters</h3>
+                      <p class="card-subtitle">7 essential agronomic variables required for ML inference</p>
+                    </div>
+                  </div>
+                  <span class="demo-data-badge">Input Validation Active</span>
+                </div>
+
+                <div class="card-body">
+                  <form id="cropForm" novalidate>
+                    <div class="form-grid-2">
+                      <!-- 1. Nitrogen -->
+                      <div class="form-group">
+                        <label for="cropN" class="form-label">
+                          <span>Nitrogen (N)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 300</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropN" class="form-control" placeholder="e.g. 90" min="0" max="300" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Ratio of Nitrogen content in soil</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 2. Phosphorus -->
+                      <div class="form-group">
+                        <label for="cropP" class="form-label">
+                          <span>Phosphorus (P)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 200</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropP" class="form-control" placeholder="e.g. 42" min="0" max="200" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Available Phosphorus for root proliferation</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 3. Potassium -->
+                      <div class="form-group">
+                        <label for="cropK" class="form-label">
+                          <span>Potassium (K)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 300</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropK" class="form-control" placeholder="e.g. 43" min="0" max="300" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Potassium for disease resistance & vigor</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 4. Soil pH -->
+                      <div class="form-group">
+                        <label for="cropPh" class="form-label">
+                          <span>Soil pH Level<span class="required">*</span></span>
+                          <span class="form-label-tip">0.0 – 14.0</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropPh" class="form-control" placeholder="e.g. 6.5" min="0" max="14" step="0.1" required>
+                          <span class="input-adornment">pH</span>
+                        </div>
+                        <div class="form-helper-text">Acidity / alkalinity (neutral: 6.5–7.2)</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 5. Temperature -->
+                      <div class="form-group">
+                        <label for="cropTemp" class="form-label">
+                          <span>Temperature<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 60 °C</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropTemp" class="form-control" placeholder="e.g. 24.5" min="0" max="60" step="0.5" required>
+                          <span class="input-adornment">°C</span>
+                        </div>
+                        <div class="form-helper-text">Average ambient daytime temperature</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 6. Humidity -->
+                      <div class="form-group">
+                        <label for="cropHumidity" class="form-label">
+                          <span>Relative Humidity<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 100 %</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropHumidity" class="form-control" placeholder="e.g. 82" min="0" max="100" step="1" required>
+                          <span class="input-adornment">%</span>
+                        </div>
+                        <div class="form-helper-text">Atmospheric moisture percentage</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 7. Rainfall (Full width on grid) -->
+                      <div class="form-group form-grid-full">
+                        <label for="cropRain" class="form-label">
+                          <span>Annual / Seasonal Rainfall<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 500 mm</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="cropRain" class="form-control" placeholder="e.g. 200" min="0" max="500" step="1" required>
+                          <span class="input-adornment">mm</span>
+                        </div>
+                        <div class="form-helper-text">Cumulative seasonal precipitation for the plot</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+                    </div>
+
+                    <!-- Form Action Buttons -->
+                    <div class="form-actions-row">
+                      <div class="form-actions-buttons">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btnPredictCrop">
+                          <span class="spinner" style="display: none;"></span>
+                          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+                            <path d="M12 2v20"/>
+                          </svg>
+                          <span class="btn-label">Get Crop Recommendation</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btnResetCrop">Reset</button>
+                      </div>
+                      <span style="font-size: 11px; color: var(--color-text-muted);">
+                        * Required agronomic inputs
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Feedback Container: Loading, Real ML Result & Error Status -->
+              <div class="feedback-container" id="cropFeedbackContainer">
+                <!-- 1. Loading State -->
+                <div class="feedback-loading-card" id="cropLoadingState" style="display: none;">
+                  <div class="loading-pulse-ring">
+                    <span class="spinner dark" style="width: 26px; height: 26px; border-width: 3px;"></span>
+                  </div>
+                  <h4 class="feedback-loading-title">Querying Machine Learning Model...</h4>
+                  <p class="feedback-loading-subtext">Evaluating soil and climatic parameters across 100 Random Forest decision trees via Flask API.</p>
+                </div>
+
+                <!-- 2. Real ML Model Prediction Result Card -->
+                <div class="feedback-result-card" id="cropResultState" style="display: none;">
+                  <div class="validated-header">
+                    <div class="validated-header-title">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                      <span>AI Crop Recommendation</span>
+                    </div>
+                    <span class="validated-status-pill" id="cropModelBadge">Random Forest &bull; 99.55% Test Accuracy</span>
+                  </div>
+
+                  <!-- Recommendation Hero Banner -->
+                  <div class="prediction-highlight-hero">
+                    <div class="prediction-crop-meta">
+                      <div class="prediction-crop-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-9 8-11 3.5 2 8 6.5 8 11a7 7 0 0 1-7 7Z"/>
+                          <path d="M12 2v20"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="prediction-crop-name" id="resultCropName">—</div>
+                        <div class="prediction-crop-botanical" id="resultCropBotanical">—</div>
+                        <span class="prediction-crop-tag" id="resultCropCategory">—</span>
+                      </div>
+                    </div>
+
+                    <div class="prediction-confidence-box">
+                      <div class="prediction-confidence-score" id="resultCropConfidence">—</div>
+                      <div class="prediction-confidence-label">Model Confidence</div>
+                    </div>
+                  </div>
+
+                  <!-- Agronomic Advisory Details -->
+                  <div class="prediction-advisory-container">
+                    <div class="prediction-advisory-item">
+                      <strong>Optimal Season:</strong> <span id="resultCropSeason">—</span>
+                    </div>
+                    <div class="prediction-advisory-item">
+                      <strong>Soil Requirement:</strong> <span id="resultCropSoil">—</span>
+                    </div>
+                    <div class="prediction-advisory-item">
+                      <strong>Agronomic Guidance:</strong> <span id="resultCropAdvisory">—</span>
+                    </div>
+                  </div>
+
+                  <!-- Top Alternatives (if applicable) -->
+                  <div class="alternatives-container" id="resultAlternativesContainer" style="display: none;">
+                    <strong>Alternative Candidates:</strong>
+                    <div id="resultAlternativesList" style="display: inline-flex; gap: 6px; flex-wrap: wrap;"></div>
+                  </div>
+
+                  <!-- Submitted Parameters Summary -->
+                  <div class="recap-title">Evaluated Input Parameters</div>
+                  <div class="recap-grid">
+                    <div class="recap-item">
+                      <div class="recap-item-label">Nitrogen (N)</div>
+                      <div class="recap-item-value" id="recapCropN">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Phosphorus (P)</div>
+                      <div class="recap-item-value" id="recapCropP">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Potassium (K)</div>
+                      <div class="recap-item-value" id="recapCropK">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Soil pH</div>
+                      <div class="recap-item-value" id="recapCropPh">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Temperature</div>
+                      <div class="recap-item-value" id="recapCropTemp">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Humidity</div>
+                      <div class="recap-item-value" id="recapCropHumidity">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Rainfall</div>
+                      <div class="recap-item-value" id="recapCropRain">—</div>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div style="display: flex; gap: var(--space-xs); justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="btnEditCropParams" type="button">Test Another Profile</button>
+                    <button class="btn btn-primary" data-target-view="dashboard" type="button">Back to Dashboard</button>
+                  </div>
+                </div>
+
+                <!-- 3. Friendly Error State (Backend Offline / Failure) -->
+                <div class="feedback-error-card" id="cropErrorState" style="display: none;">
+                  <div class="error-card-header">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Backend Server Connection Error</span>
+                  </div>
+                  <p class="error-card-desc" id="cropErrorMessage">
+                    Unable to connect to the AgriSmart AI Python Flask API at <code>http://127.0.0.1:5000/api/predict-crop</code>. Please ensure the backend server is running locally.
+                  </p>
+
+                  <div style="font-size: 11px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 4px;">
+                    Start the backend server in PowerShell:
+                  </div>
+                  <div class="error-command-box">
+                    & "C:\Users\lalit\AppData\Local\Programs\Python\Python312\python.exe" backend/app.py
+                  </div>
+
+                  <div style="display: flex; gap: var(--space-xs);">
+                    <button class="btn btn-primary" id="btnRetryCropApi" type="button">Retry Prediction</button>
+                    <button class="btn btn-secondary" id="btnDismissCropError" type="button">Modify Inputs</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Educational Agronomic Guide -->
+            <div class="guide-stack">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Agronomic Guide</h3>
+                      <p class="card-subtitle">Role of the 7 evaluated parameters</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">🌱</div>
+                    <div class="guide-item-body">
+                      <strong>Macronutrients (N-P-K)</strong>
+                      Nitrogen (N) fuels leaf chlorophyll and vegetative biomass; Phosphorus (P) accelerates root development and early tillering; Potassium (K) enhances cellular osmotic regulation and drought hardiness.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">⚗️</div>
+                    <div class="guide-item-body">
+                      <strong>Soil Reaction (pH)</strong>
+                      Controls nutrient bioavailability. Neutral soils (pH 6.2–7.3) allow maximum nutrient uptake, whereas acidic or alkaline soils lock micro-minerals in insoluble compounds.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">☀️</div>
+                    <div class="guide-item-body">
+                      <strong>Climatic Suitability</strong>
+                      Temperature regulates enzymatic photorespiration, while relative humidity and precipitation govern crop water balance and fungal spore viability.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">🤖</div>
+                    <div class="guide-item-body">
+                      <strong>Machine Learning Inference</strong>
+                      In Part 5, a trained multi-class classifier will match these multi-dimensional parameters with historic crop harvest yields across 22 major crop species.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 3: IRRIGATION ADVISOR (Interactive Form Interface)
+             ================================================================ -->
+        <section class="view-section" id="view-irrigation">
+          <!-- Module Header & Breadcrumb -->
+          <div class="module-header-container">
+            <div class="module-header-info">
+              <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+                <a href="#dashboard" data-target-view="dashboard">Dashboard</a>
+                <span class="breadcrumb-sep">/</span>
+                <span>Irrigation Advisor</span>
+              </nav>
+              <h2 class="module-title">Smart Irrigation Advisor</h2>
+              <p class="module-subtitle">Calculate crop water deficits and schedule precision watering based on real-time soil and ambient metrics.</p>
+            </div>
+            <div class="module-header-actions">
+              <button class="btn btn-secondary" id="btnLoadIrrigSample" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Load Sample Data</span>
+              </button>
+              <button class="btn btn-secondary" data-target-view="dashboard" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Dashboard</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Two-Column Layout -->
+          <div class="module-two-col-layout">
+            <!-- Left Column: Form & Feedback -->
+            <div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #e0f2fe; color: #0369a1;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Water Management Parameters</h3>
+                      <p class="card-subtitle">5 environmental and crop variables for evapotranspiration modeling</p>
+                    </div>
+                  </div>
+                  <span class="demo-data-badge">Input Validation Active</span>
+                </div>
+
+                <div class="card-body">
+                  <form id="irrigationForm" novalidate>
+                    <div class="form-grid-2">
+                      <!-- 1. Crop Selection (Full Width) -->
+                      <div class="form-group form-grid-full">
+                        <label for="irrigCrop" class="form-label">
+                          <span>Cultivated Crop<span class="required">*</span></span>
+                          <span class="form-label-tip">Defines crop coefficient (Kc)</span>
+                        </label>
+                        <select id="irrigCrop" class="form-control" required>
+                          <option value="">— Select Target Crop —</option>
+                          <option value="wheat">Wheat (Triticum aestivum)</option>
+                          <option value="rice">Rice / Paddy (Oryza sativa)</option>
+                          <option value="maize">Maize / Corn (Zea mays)</option>
+                          <option value="cotton">Cotton (Gossypium hirsutum)</option>
+                          <option value="sugarcane">Sugarcane (Saccharum officinarum)</option>
+                          <option value="tomato">Tomato (Solanum lycopersicum)</option>
+                          <option value="potato">Potato (Solanum tuberosum)</option>
+                          <option value="groundnut">Groundnut / Peanut (Arachis hypogaea)</option>
+                          <option value="mustard">Mustard (Brassica juncea)</option>
+                          <option value="chickpea">Chickpea / Gram (Cicer arietinum)</option>
+                        </select>
+                        <div class="form-helper-text">Each crop possesses a distinct growth-stage water consumption coefficient</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 2. Soil Moisture -->
+                      <div class="form-group">
+                        <label for="irrigMoisture" class="form-label">
+                          <span>Soil Moisture Level<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 100 %</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="irrigMoisture" class="form-control" placeholder="e.g. 45" min="0" max="100" step="1" required>
+                          <span class="input-adornment">%</span>
+                        </div>
+                        <div class="form-helper-text">Current volumetric soil moisture sensor reading</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 3. Temperature -->
+                      <div class="form-group">
+                        <label for="irrigTemp" class="form-label">
+                          <span>Ambient Temperature<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 60 °C</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="irrigTemp" class="form-control" placeholder="e.g. 28.0" min="0" max="60" step="0.5" required>
+                          <span class="input-adornment">°C</span>
+                        </div>
+                        <div class="form-helper-text">Daytime temperature driving evaporation</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 4. Humidity -->
+                      <div class="form-group">
+                        <label for="irrigHumidity" class="form-label">
+                          <span>Relative Humidity<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 100 %</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="irrigHumidity" class="form-control" placeholder="e.g. 52" min="0" max="100" step="1" required>
+                          <span class="input-adornment">%</span>
+                        </div>
+                        <div class="form-helper-text">Higher humidity reduces transpirational demand</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 5. Recent Rainfall -->
+                      <div class="form-group">
+                        <label for="irrigRainfall" class="form-label">
+                          <span>Recent Rainfall<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 300 mm</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="irrigRainfall" class="form-control" placeholder="e.g. 5" min="0" max="300" step="1" required>
+                          <span class="input-adornment">mm</span>
+                        </div>
+                        <div class="form-helper-text">Precipitation received in the last 48–72 hours</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions-row">
+                      <div class="form-actions-buttons">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btnCalculateIrrigation">
+                          <span class="spinner" style="display: none;"></span>
+                          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                          </svg>
+                          <span class="btn-label">Calculate Irrigation Advice</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btnResetIrrig">Reset</button>
+                      </div>
+                      <span style="font-size: 11px; color: var(--color-text-muted);">* All fields validated</span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Feedback Container -->
+              <div class="feedback-container" id="irrigationFeedbackContainer">
+                <div class="feedback-loading-card" id="irrigationLoadingState" style="display: none;">
+                  <div class="loading-pulse-ring" style="background-color: #e0f2fe; color: #0369a1; box-shadow: 0 0 0 8px rgba(3, 105, 161, 0.15);">
+                    <span class="spinner dark" style="width: 24px; height: 24px; border-width: 3px; border-top-color: #0369a1;"></span>
+                  </div>
+                  <h4 class="feedback-loading-title">Calculating Soil-Water Dynamics...</h4>
+                  <p class="feedback-loading-subtext">Evaluating FAO-56 evapotranspiration deficit and moisture replenishment requirements.</p>
+                </div>
+
+                <!-- Real Rule-Based Irrigation Result Card -->
+                <div class="feedback-result-card" id="irrigationResultState" style="display: none;">
+                  <div class="validated-header">
+                    <div class="validated-header-title">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                      </svg>
+                      <span>Smart Irrigation Advisory</span>
+                    </div>
+                    <span class="validated-status-pill" style="background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd;">
+                      FAO-56 Water Balance Model
+                    </span>
+                  </div>
+
+                  <!-- Urgency Banner -->
+                  <div class="prediction-highlight-hero" style="background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%); border-color: #bae6fd;">
+                    <div class="prediction-crop-meta">
+                      <div class="prediction-crop-avatar" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="prediction-crop-name" id="resultIrrigUrgency">—</div>
+                        <div class="prediction-crop-botanical" id="resultIrrigCropName">—</div>
+                        <span class="prediction-crop-tag" id="resultIrrigMethod" style="background-color: #e0f2fe; color: #0369a1;">—</span>
+                      </div>
+                    </div>
+
+                    <div class="prediction-confidence-box">
+                      <div class="prediction-confidence-score" id="resultIrrigWaterDepth" style="color: #0284c7;">—</div>
+                      <div class="prediction-confidence-label">Net Water Depth</div>
+                    </div>
+                  </div>
+
+                  <!-- Metrics Row -->
+                  <div class="recap-title">Water Balance Calculations</div>
+                  <div class="recap-grid" style="margin-bottom: var(--space-md);">
+                    <div class="recap-item">
+                      <div class="recap-item-label">Reference ET0</div>
+                      <div class="recap-item-value" id="resultIrrigEt0">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Crop Demand (ETc)</div>
+                      <div class="recap-item-value" id="resultIrrigEtc">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Water Volume</div>
+                      <div class="recap-item-value" id="resultIrrigVolume">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Drip Run-time</div>
+                      <div class="recap-item-value" id="resultIrrigRuntime">—</div>
+                    </div>
+                  </div>
+
+                  <!-- Advisory Details -->
+                  <div class="prediction-advisory-container">
+                    <div class="prediction-advisory-item">
+                      <strong>Irrigation Status Note:</strong> <span id="resultIrrigNote">—</span>
+                    </div>
+                    <div class="prediction-advisory-item">
+                      <strong>Optimal Watering Window:</strong> <span id="resultIrrigWindow">—</span>
+                    </div>
+                    <div class="prediction-advisory-item">
+                      <strong>Critical Crop Growth Stage:</strong> <span id="resultIrrigStage">—</span>
+                    </div>
+                  </div>
+
+                  <!-- Submitted Parameters Recap -->
+                  <div class="recap-title">Evaluated Environmental Inputs</div>
+                  <div class="recap-grid">
+                    <div class="recap-item">
+                      <div class="recap-item-label">Cultivated Crop</div>
+                      <div class="recap-item-value" id="recapIrrigCrop">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Soil Moisture</div>
+                      <div class="recap-item-value" id="recapIrrigMoisture">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Temperature</div>
+                      <div class="recap-item-value" id="recapIrrigTemp">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Humidity</div>
+                      <div class="recap-item-value" id="recapIrrigHumidity">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Recent Rainfall</div>
+                      <div class="recap-item-value" id="recapIrrigRain">—</div>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: var(--space-xs); justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="btnEditIrrigParams" type="button">Recalculate</button>
+                    <button class="btn btn-primary" data-target-view="dashboard" type="button">Back to Dashboard</button>
+                  </div>
+                </div>
+
+                <!-- Error State -->
+                <div class="feedback-error-card" id="irrigationErrorState" style="display: none;">
+                  <div class="error-card-header">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Irrigation Advisory Calculation Notice</span>
+                  </div>
+                  <p class="error-card-desc" id="irrigationErrorMessage">
+                    Unable to reach the backend irrigation calculation service.
+                  </p>
+                  <button class="btn btn-secondary" id="btnDismissIrrigError" type="button">Modify Inputs</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Irrigation Science Guide -->
+            <div class="guide-stack">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #e0f2fe; color: #0369a1;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Water Conservation</h3>
+                      <p class="card-subtitle">Precision irrigation principles</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">💧</div>
+                    <div class="guide-item-body">
+                      <strong>Evapotranspiration ($ET_c$)</strong>
+                      Crop water consumption is calculated as $ET_c = ET_0 \times K_c$, where reference evapotranspiration ($ET_0$) accounts for solar heat and humidity.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">⚡</div>
+                    <div class="guide-item-body">
+                      <strong>Management Allowed Depletion (MAD)</strong>
+                      Water stress occurs when soil moisture drops below 50% of Field Capacity. Timely micro-irrigation prevents yield penalties.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">🌿</div>
+                    <div class="guide-item-body">
+                      <strong>Drip vs Flood Efficiency</strong>
+                      Drip systems provide 85–90% application efficiency compared to 40–50% in traditional furrow/flood irrigation, reducing electricity and water consumption.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 4: FERTILIZER GUIDANCE (Interactive Form Interface)
+             ================================================================ -->
+        <section class="view-section" id="view-fertilizer">
+          <!-- Module Header & Breadcrumb -->
+          <div class="module-header-container">
+            <div class="module-header-info">
+              <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+                <a href="#dashboard" data-target-view="dashboard">Dashboard</a>
+                <span class="breadcrumb-sep">/</span>
+                <span>Fertilizer Guidance</span>
+              </nav>
+              <h2 class="module-title">Fertilizer Guidance System</h2>
+              <p class="module-subtitle">Diagnose soil nutrient deficiencies and determine balanced chemical fertilizer requirements.</p>
+            </div>
+            <div class="module-header-actions">
+              <button class="btn btn-secondary" id="btnLoadFertSample" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Load Sample Data</span>
+              </button>
+              <button class="btn btn-secondary" data-target-view="dashboard" type="button">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Dashboard</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Two-Column Layout -->
+          <div class="module-two-col-layout">
+            <!-- Left Column: Form & Feedback -->
+            <div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #d1fae5; color: #065f46;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2v7.31"/>
+                        <path d="M14 9.3V2"/>
+                        <path d="M8.5 2h7"/>
+                        <path d="M14 9.3a6.5 6.5 0 1 1-4 0"/>
+                        <path d="M5.52 16h12.96"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">Soil Nutrient Profile</h3>
+                      <p class="card-subtitle">Laboratory chemical test inputs for deficit calculation</p>
+                    </div>
+                  </div>
+                  <span class="demo-data-badge">Input Validation Active</span>
+                </div>
+
+                <div class="card-body">
+                  <form id="fertilizerForm" novalidate>
+                    <div class="form-grid-2">
+                      <!-- 1. Crop Selection (Full Width) -->
+                      <div class="form-group form-grid-full">
+                        <label for="fertCrop" class="form-label">
+                          <span>Target Crop<span class="required">*</span></span>
+                          <span class="form-label-tip">Defines standard nutrient baseline</span>
+                        </label>
+                        <select id="fertCrop" class="form-control" required>
+                          <option value="">— Select Cultivated Crop —</option>
+                          <option value="wheat">Wheat (Triticum aestivum)</option>
+                          <option value="rice">Rice / Paddy (Oryza sativa)</option>
+                          <option value="maize">Maize / Corn (Zea mays)</option>
+                          <option value="cotton">Cotton (Gossypium hirsutum)</option>
+                          <option value="sugarcane">Sugarcane (Saccharum officinarum)</option>
+                          <option value="tomato">Tomato (Solanum lycopersicum)</option>
+                          <option value="potato">Potato (Solanum tuberosum)</option>
+                          <option value="groundnut">Groundnut / Peanut (Arachis hypogaea)</option>
+                          <option value="mustard">Mustard (Brassica juncea)</option>
+                          <option value="chickpea">Chickpea / Gram (Cicer arietinum)</option>
+                        </select>
+                        <div class="form-helper-text">Target crop determines nutrient removal rates per ton of expected yield</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 2. Soil Nitrogen -->
+                      <div class="form-group">
+                        <label for="fertN" class="form-label">
+                          <span>Available Nitrogen (N)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 300</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="fertN" class="form-control" placeholder="e.g. 75" min="0" max="300" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Alkaline permanganate extractable Nitrogen</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 3. Soil Phosphorus -->
+                      <div class="form-group">
+                        <label for="fertP" class="form-label">
+                          <span>Available Phosphorus (P)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 200</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="fertP" class="form-control" placeholder="e.g. 28" min="0" max="200" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Olsen method extractable Phosphorus</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 4. Soil Potassium -->
+                      <div class="form-group">
+                        <label for="fertK" class="form-label">
+                          <span>Available Potassium (K)<span class="required">*</span></span>
+                          <span class="form-label-tip">0 – 300</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="fertK" class="form-control" placeholder="e.g. 35" min="0" max="300" step="1" required>
+                          <span class="input-adornment">mg/kg</span>
+                        </div>
+                        <div class="form-helper-text">Neutral normal ammonium acetate extraction</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+
+                      <!-- 5. Soil pH Level -->
+                      <div class="form-group">
+                        <label for="fertPh" class="form-label">
+                          <span>Soil pH Level<span class="required">*</span></span>
+                          <span class="form-label-tip">0.0 – 14.0</span>
+                        </label>
+                        <div class="input-with-adornment">
+                          <input type="number" id="fertPh" class="form-control" placeholder="e.g. 6.6" min="0" max="14" step="0.1" required>
+                          <span class="input-adornment">pH</span>
+                        </div>
+                        <div class="form-helper-text">Influences fertilizer fixing and nutrient efficiency</div>
+                        <div class="form-error-msg"></div>
+                      </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions-row">
+                      <div class="form-actions-buttons">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btnCalculateFertilizer">
+                          <span class="spinner" style="display: none;"></span>
+                          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 2v7.31"/>
+                            <path d="M14 9.3V2"/>
+                            <path d="M8.5 2h7"/>
+                            <path d="M14 9.3a6.5 6.5 0 1 1-4 0"/>
+                          </svg>
+                          <span class="btn-label">Analyze Fertilizer Needs</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btnResetFert">Reset</button>
+                      </div>
+                      <span style="font-size: 11px; color: var(--color-text-muted);">* All fields validated</span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Feedback Container -->
+              <div class="feedback-container" id="fertilizerFeedbackContainer">
+                <div class="feedback-loading-card" id="fertilizerLoadingState" style="display: none;">
+                  <div class="loading-pulse-ring" style="background-color: #d1fae5; color: #065f46; box-shadow: 0 0 0 8px rgba(6, 95, 70, 0.15);">
+                    <span class="spinner dark" style="width: 24px; height: 24px; border-width: 3px; border-top-color: #065f46;"></span>
+                  </div>
+                  <h4 class="feedback-loading-title">Diagnosing Nutrient Deficiencies...</h4>
+                  <p class="feedback-loading-subtext">Evaluating soil chemical concentrations against standard agricultural nutrient removal rates.</p>
+                </div>
+
+                <!-- Real Rule-Based Fertilizer Result Card -->
+                <div class="feedback-result-card" id="fertilizerResultState" style="display: none;">
+                  <div class="validated-header">
+                    <div class="validated-header-title">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2v7.31"></path>
+                        <path d="M14 9.3V2"></path>
+                        <path d="M8.5 2h7"></path>
+                        <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+                        <path d="M5.52 16h12.96"></path>
+                      </svg>
+                      <span>Prescribed Fertilizer Dosage</span>
+                    </div>
+                    <span class="validated-status-pill" style="background-color: #d1fae5; color: #065f46; border-color: #a7f3d0;">
+                      ICAR Nutrient-Gap Model
+                    </span>
+                  </div>
+
+                  <!-- 3 Commercial Fertilizer Cards -->
+                  <div class="recap-title">Recommended Commercial Formulations</div>
+                  <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: var(--space-lg);">
+                    <div class="stat-card" style="padding: var(--space-md); border-color: #bbf7d0;">
+                      <span class="stat-label">Urea (46% N)</span>
+                      <div class="stat-value" id="resultFertUrea" style="font-size: 1.35rem; color: #065f46;">—</div>
+                      <div class="stat-footer">
+                        <span class="stat-trend-subtext" id="resultFertUreaBags">— bags / ha</span>
+                      </div>
+                    </div>
+                    <div class="stat-card" style="padding: var(--space-md); border-color: #fed7aa;">
+                      <span class="stat-label">DAP (18-46-0)</span>
+                      <div class="stat-value" id="resultFertDap" style="font-size: 1.35rem; color: #9a3412;">—</div>
+                      <div class="stat-footer">
+                        <span class="stat-trend-subtext" id="resultFertDapBags">— bags / ha</span>
+                      </div>
+                    </div>
+                    <div class="stat-card" style="padding: var(--space-md); border-color: #ddd6fe;">
+                      <span class="stat-label">MOP (60% K₂O)</span>
+                      <div class="stat-value" id="resultFertMop" style="font-size: 1.35rem; color: #5b21b6;">—</div>
+                      <div class="stat-footer">
+                        <span class="stat-trend-subtext" id="resultFertMopBags">— bags / ha</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Soil pH Reaction & Lime/Gypsum Advisory -->
+                  <div class="prediction-advisory-container">
+                    <div class="prediction-advisory-item">
+                      <strong>Soil Reaction (pH):</strong> <span id="resultFertPhStatus">—</span>
+                    </div>
+                    <div class="prediction-advisory-item">
+                      <strong>Soil Amendment Guidance:</strong> <span id="resultFertPhAdvisory">—</span>
+                    </div>
+                  </div>
+
+                  <!-- 3-Stage Split Schedule Table -->
+                  <div class="recap-title">Application Schedule (Split Dosing)</div>
+                  <div class="table-wrapper" style="margin-bottom: var(--space-lg);">
+                    <table class="custom-table">
+                      <thead>
+                        <tr>
+                          <th>Crop Growth Stage</th>
+                          <th>Urea Dosage</th>
+                          <th>DAP Dosage</th>
+                          <th>MOP Dosage</th>
+                          <th>Agronomic Purpose</th>
+                        </tr>
+                      </thead>
+                      <tbody id="resultFertScheduleBody">
+                        <!-- Populated dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Evaluated Soil Test Recap -->
+                  <div class="recap-title">Evaluated Soil Test Profile</div>
+                  <div class="recap-grid">
+                    <div class="recap-item">
+                      <div class="recap-item-label">Target Crop</div>
+                      <div class="recap-item-value" id="recapFertCrop">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Nitrogen (N)</div>
+                      <div class="recap-item-value" id="recapFertN">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Phosphorus (P)</div>
+                      <div class="recap-item-value" id="recapFertP">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Potassium (K)</div>
+                      <div class="recap-item-value" id="recapFertK">—</div>
+                    </div>
+                    <div class="recap-item">
+                      <div class="recap-item-label">Soil pH</div>
+                      <div class="recap-item-value" id="recapFertPh">—</div>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: var(--space-xs); justify-content: flex-end; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="btnEditFertParams" type="button">Recalculate</button>
+                    <button class="btn btn-primary" data-target-view="dashboard" type="button">Back to Dashboard</button>
+                  </div>
+                </div>
+
+                <!-- Error State -->
+                <div class="feedback-error-card" id="fertilizerErrorState" style="display: none;">
+                  <div class="error-card-header">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Fertilizer Guidance Service Notice</span>
+                  </div>
+                  <p class="error-card-desc" id="fertilizerErrorMessage">
+                    Unable to reach the fertilizer calculation service.
+                  </p>
+                  <button class="btn btn-secondary" id="btnDismissFertError" type="button">Modify Inputs</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Fertilizer Science Guide -->
+            <div class="guide-stack">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <div class="card-title-icon" style="background-color: #d1fae5; color: #065f46;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 2v7.31"/>
+                        <path d="M14 9.3V2"/>
+                        <path d="M8.5 2h7"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="card-title">4R Nutrient Stewardship</h3>
+                      <p class="card-subtitle">Balanced chemical fertilization</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">⚖️</div>
+                    <div class="guide-item-body">
+                      <strong>Right Rate & Right Source</strong>
+                      Over-fertilization causes soil salinity, groundwater nitrate leaching, and economic waste. Precise chemical matching delivers optimal cost-to-yield ratio.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">🧪</div>
+                    <div class="guide-item-body">
+                      <strong>Standard Chemical Formulations</strong>
+                      <strong>Urea (46-0-0)</strong> provides concentrated nitrogen; <strong>DAP (18-46-0)</strong> provides basal phosphorus & nitrogen; <strong>MOP (0-0-60)</strong> supplies muriate of potash.
+                    </div>
+                  </div>
+
+                  <div class="guide-card-item">
+                    <div class="guide-item-icon">⏳</div>
+                    <div class="guide-item-body">
+                      <strong>Split Application Timing</strong>
+                      Applying nitrogen in 2–3 vegetative splits matches root absorption curves and reduces atmospheric volatilization.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 5: WEATHER (Module Placeholder)
+             ================================================================ -->
+        <section class="view-section" id="view-weather">
+          <div class="placeholder-container">
+            <span class="placeholder-badge">Agrometeorology</span>
+            <div class="placeholder-icon" style="background-color: #fef3c7; color: #b45309;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+              </svg>
+            </div>
+            <h2 class="placeholder-title">Weather Dashboard</h2>
+            <p class="placeholder-description">
+              Multi-day agricultural weather forecast tracking solar radiation, precipitation probability, humidity, and optimal spraying/harvesting windows.
+            </p>
+
+            <div class="placeholder-roadmap">
+              <div class="roadmap-title">Planned Architecture in Future Parts</div>
+              <ul class="roadmap-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Part 3: 5-Day forecast cards layout & farming suitability gauges</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Part 7: Weather API integration with offline demo dataset fallback</span>
+                </li>
+              </ul>
+            </div>
+
+            <button class="btn btn-primary" data-target-view="dashboard">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Dashboard</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 6: HISTORY (Module Placeholder)
+             ================================================================ -->
+        <section class="view-section" id="view-history">
+          <div class="placeholder-container">
+            <span class="placeholder-badge">Audit & Records</span>
+            <div class="placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h2 class="placeholder-title">Consultation History</h2>
+            <p class="placeholder-description">
+              Complete chronological archive of all previous crop predictions, irrigation schedules, and soil tests stored in browser <code>localStorage</code>.
+            </p>
+
+            <div class="placeholder-roadmap">
+              <div class="roadmap-title">Planned Architecture in Future Parts</div>
+              <ul class="roadmap-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Part 7: LocalStorage record persistence, filtering by date and crop</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Part 7: CSV export and print-ready summary report</span>
+                </li>
+              </ul>
+            </div>
+
+            <button class="btn btn-primary" data-target-view="dashboard">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>Back to Dashboard</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Clean Footer -->
+      <footer class="app-footer">
+        <div>
+          <strong>AgriSmart AI</strong> &bull; Smart Agriculture Assistant &bull; College Mini Project
+        </div>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          <span>System Healthy &bull; Demo Mode</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Application Logic (Vanilla JS) -->
+  <script src="js/app.js"></script>
+  <script src="js/crop.js"></script>
+  <script src="js/irrigation.js"></script>
+  <script src="js/fertilizer.js"></script>
+</body>
+</html>
